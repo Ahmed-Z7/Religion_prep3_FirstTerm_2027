@@ -1,0 +1,871 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap');
+
+:root {
+  --primary: #065f46;         /* Deep Islamic Emerald */
+  --primary-dark: #064e3b;
+  --primary-light: #10b981;
+  --primary-subtle: #ecfdf5;
+  --gold: #d97706;            /* Warm Islamic Gold */
+  --gold-dark: #b45309;
+  --gold-light: #fef3c7;
+  --secondary: #1e293b;       /* Slate Navy */
+  --accent: #0284c7;          /* Sky Blue for questions */
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.12);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+}
+
+[data-theme="dark"] {
+  --primary: #10b981;
+  --primary-dark: #059669;
+  --primary-light: #34d399;
+  --primary-subtle: rgba(16, 185, 129, 0.12);
+  --gold: #fbbf24;
+  --gold-dark: #d97706;
+  --gold-light: rgba(251, 191, 36, 0.12);
+  --secondary: #94a3b8;
+  --bg-main: #090d16;
+  --bg-card: #131c2e;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #1e293b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+body {
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  direction: rtl;
+  text-align: right;
+  line-height: 1.8;
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+/* Floating Action Toolbar */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border-color);
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+[data-theme="dark"] .top-nav {
+  background: rgba(19, 28, 46, 0.92);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav-brand .brand-logo {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--primary), var(--gold));
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 20px;
+  box-shadow: 0 4px 10px rgba(6, 95, 70, 0.25);
+}
+.nav-brand .brand-text {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+[data-theme="dark"] .nav-brand .brand-text {
+  color: var(--gold);
+}
+.nav-brand .brand-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--primary);
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #ffffff !important;
+  border: none;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  color: #ffffff;
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: #ffffff !important;
+  border: none;
+}
+.btn-gold:hover {
+  background: linear-gradient(135deg, #f59e0b, var(--gold));
+}
+
+.search-input {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.9rem;
+  min-width: 220px;
+  outline: none;
+}
+.search-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-subtle);
+}
+
+/* Layout Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+/* ========================================================
+   COVER PAGE DESIGN (غلاف جذاب فاخر)
+======================================================== */
+.cover-page {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 40px;
+  border: 4px solid var(--gold);
+  background: #032b21 url('../assets/cover_bg.jpg') center/cover no-repeat;
+  color: #ffffff;
+  padding: 40px 30px;
+  text-align: center;
+}
+
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(6, 78, 59, 0.72) 0%, rgba(3, 43, 33, 0.94) 100%);
+  z-index: 1;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 80vh;
+}
+
+.cover-header {
+  border-bottom: 2px dashed rgba(217, 119, 6, 0.5);
+  padding-bottom: 20px;
+}
+.cover-bismillah {
+  font-family: 'Amiri', serif;
+  font-size: 2.2rem;
+  color: var(--gold-light);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.cover-series-title {
+  display: inline-block;
+  background: rgba(217, 119, 6, 0.25);
+  border: 1px solid var(--gold);
+  color: #fef3c7;
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.cover-center {
+  margin: auto 0;
+  padding: 30px 20px;
+}
+.cover-main-title {
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1.25;
+  color: #ffffff;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  margin-bottom: 12px;
+}
+.cover-main-title span {
+  color: #fbbf24;
+  display: block;
+  font-size: 3.5rem;
+}
+.cover-grade-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #10b981, #047857);
+  color: white;
+  padding: 10px 30px;
+  border-radius: 40px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  border: 2px solid #a7f3d0;
+  margin-bottom: 20px;
+}
+.cover-features-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
+}
+.cover-feature-pill {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fef3c7;
+}
+
+.cover-footer {
+  border-top: 2px dashed rgba(217, 119, 6, 0.5);
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.teacher-profile {
+  text-align: right;
+}
+.teacher-title {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+}
+.teacher-name {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fbbf24;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+.teacher-role {
+  font-size: 1.05rem;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+.teacher-contact {
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid #fbbf24;
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  text-align: left;
+}
+.contact-label {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  display: block;
+}
+.contact-phone {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #38bdf8;
+  direction: ltr;
+  display: inline-block;
+  letter-spacing: 2px;
+}
+
+/* ========================================================
+   TABLE OF CONTENTS (الفهرس الشامل)
+======================================================== */
+.toc-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-md);
+}
+.toc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+.toc-header h2 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--primary-dark);
+}
+[data-theme="dark"] .toc-header h2 {
+  color: var(--gold);
+}
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+.toc-unit-box {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+.toc-unit-box:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+.toc-unit-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.toc-unit-title .badge {
+  background: var(--gold);
+  color: white;
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+.toc-list {
+  list-style: none;
+}
+.toc-list li {
+  padding: 7px 0;
+  border-bottom: 1px dashed var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.toc-list li:last-child {
+  border-bottom: none;
+}
+.toc-list a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+.toc-list a:hover {
+  color: var(--primary);
+}
+.toc-list .branch-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--border-color);
+  color: var(--text-muted);
+}
+
+/* ========================================================
+   SECTION & BRANCH HEADERS
+======================================================== */
+.branch-section {
+  margin-bottom: 50px;
+}
+.branch-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #ffffff;
+  padding: 20px 25px;
+  border-radius: var(--radius-md);
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+  border-right: 8px solid var(--gold);
+}
+.branch-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+.branch-subtitle {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.lesson-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  margin-bottom: 35px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s ease;
+}
+.lesson-card:hover {
+  box-shadow: var(--shadow-md);
+}
+.lesson-header {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.lesson-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+[data-theme="dark"] .lesson-title {
+  color: var(--primary-light);
+}
+.lesson-badge {
+  background: var(--primary-subtle);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--primary-light);
+}
+
+/* ========================================================
+   CALLOUT BOXES (Quran, Hadith, Golden Rules)
+======================================================== */
+.ayah-box {
+  background: linear-gradient(135deg, rgba(6, 95, 70, 0.05) 0%, rgba(217, 119, 6, 0.05) 100%);
+  border: 2px solid var(--primary-light);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  margin: 20px 0;
+  text-align: center;
+  position: relative;
+}
+.ayah-box::before {
+  content: '﴿';
+  font-family: 'Amiri', serif;
+  font-size: 2rem;
+  color: var(--gold);
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+.ayah-box::after {
+  content: '﴾';
+  font-family: 'Amiri', serif;
+  font-size: 2rem;
+  color: var(--gold);
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+}
+.ayah-text {
+  font-family: 'Amiri', serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 2.1;
+  color: var(--primary-dark);
+}
+[data-theme="dark"] .ayah-text {
+  color: #a7f3d0;
+}
+.ayah-surah {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  margin-top: 10px;
+}
+
+.hadith-box {
+  background: var(--bg-main);
+  border-right: 5px solid var(--gold);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 20px;
+  margin: 20px 0;
+}
+.hadith-title {
+  font-weight: 800;
+  color: var(--gold-dark);
+  font-size: 1rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hadith-text {
+  font-family: 'Amiri', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.9;
+  color: var(--text-main);
+}
+.hadith-source {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.rule-box {
+  background: var(--primary-subtle);
+  border: 1px solid var(--primary-light);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin: 20px 0;
+}
+.rule-title {
+  font-weight: 800;
+  color: var(--primary);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+/* ========================================================
+   TABLES (معاني الكلمات، المقارنات)
+======================================================== */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.data-table th {
+  background: var(--primary);
+  color: #ffffff;
+  padding: 12px 16px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: 1px solid var(--primary-dark);
+}
+.data-table td {
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  font-size: 0.95rem;
+}
+.data-table tr:nth-child(even) {
+  background: var(--bg-main);
+}
+.data-table tr:hover {
+  background: var(--primary-subtle);
+}
+.vocab-word {
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+[data-theme="dark"] .vocab-word {
+  color: var(--primary-light);
+}
+
+/* ========================================================
+   MINISTRY ACTIVITIES & EXERCISES (حل أسئلة كتاب الوزارة)
+======================================================== */
+.ministry-box {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(6, 95, 70, 0.05) 100%);
+  border: 2px dashed var(--accent);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  margin: 25px 0;
+}
+.ministry-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.question-item {
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+.question-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.q-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+.q-answer {
+  background: var(--bg-card);
+  border-right: 4px solid var(--primary-light);
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+[data-theme="dark"] .q-answer {
+  color: #6ee7b7;
+}
+
+/* ========================================================
+   QUESTION BANK (صح أو خطأ + اختيار من متعدد)
+======================================================== */
+.qa-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+.qa-card:hover {
+  border-color: var(--primary-light);
+  box-shadow: var(--shadow-md);
+}
+.qa-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.qa-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+.qa-text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  flex-grow: 1;
+}
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 12px 0 10px 0;
+}
+.option-btn {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: right;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.option-btn:hover {
+  background: var(--primary-subtle);
+  border-color: var(--primary);
+}
+.option-btn.correct {
+  background: #dcfce7 !important;
+  border-color: #22c55e !important;
+  color: #15803d !important;
+  font-weight: 800;
+}
+.answer-reveal {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: var(--primary-subtle);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+[data-theme="dark"] .answer-reveal {
+  color: #6ee7b7;
+}
+
+/* ========================================================
+   COMPREHENSIVE EXAMS (الامتحانات الشاملة)
+======================================================== */
+.exam-container {
+  background: var(--bg-card);
+  border: 3px solid var(--primary);
+  border-radius: var(--radius-lg);
+  padding: 35px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-lg);
+}
+.exam-top-box {
+  border-bottom: 3px double var(--primary);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+.exam-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--primary-dark);
+}
+[data-theme="dark"] .exam-title {
+  color: var(--gold);
+}
+.exam-meta {
+  display: flex;
+  justify-content: space-around;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+.exam-part {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--border-color);
+}
+.exam-part-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--gold-dark);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ========================================================
+   PRINT STYLES (@media print)
+======================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm 12mm 15mm 12mm;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 13pt;
+    line-height: 1.6;
+  }
+  .top-nav, .btn, .search-box, .no-print {
+    display: none !important;
+  }
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .cover-page {
+    height: 100vh !important;
+    min-height: 100vh !important;
+    page-break-after: always !important;
+    border: 3px solid #d97706 !important;
+    box-shadow: none !important;
+  }
+  .branch-section {
+    page-break-before: always !important;
+  }
+  .lesson-card, .qa-card, .exam-container, .toc-card {
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    margin-bottom: 20px !important;
+    padding: 15px !important;
+  }
+  .branch-header {
+    background: #065f46 !important;
+    color: #ffffff !important;
+    border-right: 8px solid #d97706 !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+  .answer-reveal {
+    display: block !important;
+    border: 1px solid #10b981 !important;
+    background: #ecfdf5 !important;
+  }
+}
