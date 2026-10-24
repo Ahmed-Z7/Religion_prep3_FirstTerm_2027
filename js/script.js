@@ -1,25 +1,35 @@
 // Islamic Education Booklet Interactive Scripts
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Theme Toggle
+  // Theme Toggle (Desktop & Mobile)
   const themeBtn = document.getElementById('themeToggle');
+  const themeMobileBtn = document.getElementById('themeToggleMobile');
   const currentTheme = localStorage.getItem('theme') || 'light';
   document.documentElement.setAttribute('data-theme', currentTheme);
   updateThemeIcon(currentTheme);
 
+  function toggleThemeAction() {
+    const activeTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+  }
+
   if (themeBtn) {
-    themeBtn.addEventListener('click', () => {
-      const activeTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeIcon(newTheme);
-    });
+    themeBtn.addEventListener('click', toggleThemeAction);
+  }
+  if (themeMobileBtn) {
+    themeMobileBtn.addEventListener('click', toggleThemeAction);
   }
 
   function updateThemeIcon(theme) {
-    if (!themeBtn) return;
-    themeBtn.innerHTML = theme === 'dark' ? '☀️ الوضع الفاتح' : '🌙 الوضع الليلي';
+    if (themeBtn) {
+      themeBtn.innerHTML = theme === 'dark' ? '☀️ الوضع الفاتح' : '🌙 الوضع الليلي';
+    }
+    if (themeMobileBtn) {
+      themeMobileBtn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
+    }
   }
 
   // Print Action
@@ -114,4 +124,24 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Floating Back to Top Button
+  const backToTopBtn = document.getElementById('backToTopBtn');
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 });
+

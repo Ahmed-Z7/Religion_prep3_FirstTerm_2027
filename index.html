@@ -14,19 +14,28 @@
   <header class="top-nav">
     <div class="nav-brand">
       <div class="brand-logo">ز</div>
-      <div>
+      <div class="brand-title-wrap">
         <div class="brand-text">سلسلة الزيدان التعليمية</div>
         <div class="brand-sub">التربية الإسلامية | الصف الثالث الإعدادي — الترم الأول</div>
+      </div>
+      <div class="nav-mobile-quick">
+        <button class="btn-icon" id="themeToggleMobile" title="تبديل الوضع الليلي">🌙</button>
+        <a href="qr_card.html" class="btn-icon" title="كارت QR للطلاب">📲</a>
       </div>
     </div>
 
     <div class="nav-actions">
-      <input type="text" id="searchInput" class="search-input" placeholder="🔍 ابحث في الدروس أو الأسئلة...">
-      <button class="btn btn-gold" id="toggleAnswersBtn">👁️ إخفاء الإجابات للاختبار</button>
-      <button class="btn" id="zoomIn" title="تكبير الخط">A+</button>
-      <button class="btn" id="themeToggle">🌙 الوضع الليلي</button>
-      <a href="qr_card.html" class="btn btn-gold" style="text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">📲 كارت QR للطلاب</a>
-      <button class="btn btn-primary" id="printBtn">🖨️ طباعة الملزمة / PDF</button>
+      <div class="search-wrap">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 ابحث في الدروس أو الأسئلة...">
+      </div>
+      <div class="nav-btn-group">
+        <button class="btn btn-gold" id="toggleAnswersBtn">👁️ إخفاء الإجابات للاختبار</button>
+        <button class="btn" id="zoomIn" title="تكبير الخط">A+ تكبير</button>
+        <button class="btn" id="zoomOut" title="تصغير الخط">A- تصغير</button>
+        <button class="btn" id="themeToggle">🌙 الوضع الليلي</button>
+        <a href="qr_card.html" class="btn btn-gold">📲 كارت QR للطلاب</a>
+        <button class="btn btn-primary" id="printBtn">🖨️ طباعة الملزمة / PDF</button>
+      </div>
     </div>
   </header>
 
@@ -1858,15 +1867,18 @@
     </section>
 
     <!-- Teacher Footer Banner -->
-    <div style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 30px; border-radius: var(--radius-lg); text-align: center; margin-top: 50px; border: 3px solid var(--gold);">
+    <div class="teacher-bottom-banner" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 30px; border-radius: var(--radius-lg); text-align: center; margin-top: 50px; border: 3px solid var(--gold);">
       <h3 style="font-size: 1.8rem; font-weight: 900; color: #fbbf24; margin-bottom: 10px;">مع أطيب أمنياتي القلبية لجميع أبنائي وبناتي بالنجاح والتفوق الباهر 🌟</h3>
       <p style="font-size: 1.2rem; font-weight: 700;">خبير اللغة العربية والتربية الإسلامية: مستر عَلِي زَيْدَان</p>
-      <div style="display: inline-block; background: rgba(0,0,0,0.3); border: 2px solid var(--gold); border-radius: 30px; padding: 8px 24px; margin-top: 15px; font-size: 1.3rem; font-weight: 900; color: #38bdf8;">
+      <div class="phone-box" style="display: inline-block; background: rgba(0,0,0,0.3); border: 2px solid var(--gold); border-radius: 30px; padding: 8px 24px; margin-top: 15px; font-size: 1.3rem; font-weight: 900; color: #38bdf8;">
         📱 رقم التواصل والواتساب: 01000936273
       </div>
     </div>
 
   </main>
+
+  <!-- Floating Back to Top Button -->
+  <button id="backToTopBtn" class="floating-back-to-top" title="العودة لأعلى الصفحة" aria-label="العودة للأعلى">⬆️</button>
 
   <script src="js/script.js"></script>
 </body>
