@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>كارت QR ملزمة التربية الإسلامية | الصف الثالث الإعدادي | مستر علي زيدان</title>
+  <meta name="description" content="كارت QR التفاعلي لملزمة التربية الإسلامية للشهادة الإعدادية - سلسلة الزيدان مستر علي زيدان. امسح الكود لفتح الملزمة الإلكترونية.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-dark: #0a192f;
+      --primary-navy: #0d254c;
+      --gold-main: #d4af37;
+      --gold-light: #fef08a;
+      --gold-dark: #b8860b;
+      --emerald: #059669;
+      --text-light: #f8fafc;
+      --text-muted: #cbd5e1;
+      --card-bg: rgba(13, 37, 76, 0.85);
+      --card-border: rgba(212, 175, 55, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: radial-gradient(circle at 50% 20%, #173261 0%, #07152b 100%);
+      color: var(--text-light);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 40px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background Geometric Elements */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -150px;
+      left: -150px;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: -150px;
+      right: -150px;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .main-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    /* Actions Bar */
+    .top-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: 1px solid transparent;
+      font-family: inherit;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #07152b;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+    }
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: var(--gold-main);
+      transform: translateY(-2px);
+    }
+
+    /* Student Card Preview */
+    .card-container {
+      perspective: 1200px;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .student-card {
+      background: linear-gradient(145deg, #0e2752 0%, #06152d 100%);
+      border: 2px solid var(--gold-main);
+      border-radius: 28px;
+      padding: 32px 24px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(212, 175, 55, 0.2);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .student-card:hover {
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 45px rgba(212, 175, 55, 0.3);
+    }
+
+    .student-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #f59e0b, #fef08a, #d97706);
+    }
+
+    /* Card Elements */
+    .card-bismillah {
+      font-family: 'Amiri', serif;
+      font-size: 1.15rem;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .card-series-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #fef08a;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      padding: 3px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.3;
+      margin-bottom: 4px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .card-title span {
+      color: var(--gold-main);
+    }
+
+    .card-subtitle {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #93c5fd;
+      margin-bottom: 20px;
+    }
+
+    /* QR Box */
+    .qr-frame {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 22px;
+      display: inline-block;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      border: 3px solid var(--gold-main);
+      position: relative;
+      margin-bottom: 16px;
+      transition: transform 0.25s ease;
+    }
+
+    .qr-frame:hover {
+      transform: scale(1.02);
+    }
+
+    .qr-frame img {
+      display: block;
+      width: 230px;
+      height: 230px;
+      border-radius: 12px;
+    }
+
+    .scan-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fef08a;
+      margin-bottom: 6px;
+    }
+
+    .scan-url {
+      font-family: monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #93c5fd;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 4px 14px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 18px;
+      border: 1px dashed rgba(147, 197, 253, 0.3);
+      direction: ltr;
+    }
+
+    /* Features Pills */
+    .features-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .feature-chip {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+
+    /* Teacher Info */
+    .card-footer {
+      border-top: 1px solid rgba(212, 175, 55, 0.25);
+      padding-top: 14px;
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: right;
+    }
+
+    .teacher-badge {
+      font-size: 0.78rem;
+      color: #cbd5e1;
+    }
+
+    .teacher-name-bold {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--gold-light);
+    }
+
+    .phone-badge {
+      background: linear-gradient(135deg, rgba(5, 150, 105, 0.2), rgba(16, 185, 129, 0.2));
+      border: 1px solid #10b981;
+      padding: 6px 12px;
+      border-radius: 16px;
+      color: #a7f3d0;
+      font-weight: 800;
+      font-size: 0.88rem;
+      text-decoration: none;
+      direction: ltr;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Printable Grid for A4 Sheet (hidden on screen) */
+    .printable-sheet {
+      display: none;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      background: #10b981;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 100;
+      pointer-events: none;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* PRINT STYLES (A4 4 Cards Layout) */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+      }
+      body::before, body::after, .top-actions, .toast, .back-nav {
+        display: none !important;
+      }
+      .main-wrapper {
+        display: none !important;
+      }
+      .printable-sheet {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 15mm;
+        width: 100%;
+        max-width: 190mm;
+        height: 270mm;
+        margin: auto;
+        page-break-after: avoid;
+      }
+      .mini-card {
+        border: 2px dashed #b8860b;
+        border-radius: 16px;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background: #fafafa !important;
+        color: #0a192f !important;
+        box-shadow: none !important;
+      }
+      .mini-card .card-title {
+        color: #0d254c !important;
+        font-size: 1.25rem !important;
+      }
+      .mini-card .card-title span {
+        color: #b8860b !important;
+      }
+      .mini-card .card-subtitle {
+        color: #1e3a8a !important;
+        font-size: 0.85rem !important;
+        margin-bottom: 8px !important;
+      }
+      .mini-card .qr-frame {
+        border: 2px solid #b8860b !important;
+        padding: 8px !important;
+        margin-bottom: 8px !important;
+      }
+      .mini-card .qr-frame img {
+        width: 130px !important;
+        height: 130px !important;
+      }
+      .mini-card .scan-hint {
+        color: #047857 !important;
+        font-size: 0.8rem !important;
+      }
+      .mini-card .scan-url {
+        color: #1e40af !important;
+        background: #e2e8f0 !important;
+        font-size: 0.75rem !important;
+        margin-bottom: 8px !important;
+      }
+      .mini-card .card-footer {
+        width: 100%;
+        border-top: 1px solid #cbd5e1 !important;
+        padding-top: 8px !important;
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .mini-card .teacher-name-bold {
+        color: #b8860b !important;
+        font-size: 0.9rem !important;
+      }
+      .mini-card .phone-badge {
+        color: #047857 !important;
+        border-color: #047857 !important;
+        font-size: 0.8rem !important;
+        padding: 3px 8px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-wrapper">
+    <!-- Top Action Buttons -->
+    <div class="top-actions">
+      <a href="index.html" class="action-btn btn-glass">
+        📖 فتح الملزمة الإلكترونية
+      </a>
+      <button class="action-btn btn-gold" onclick="window.print()">
+        🖨️ طباعة كروت التوزيع (4 في صفحة A4)
+      </button>
+      <a href="student_qr_card.png" download="كارت_طالب_ملزمة_التربية_الإسلامية_مستر_علي_زيدان.png" class="action-btn btn-glass">
+        📥 تحميل كارت الطالب كصورة
+      </a>
+      <a href="qr_code_styled.png" download="qr_code_mazlama.png" class="action-btn btn-glass">
+        📥 تحميل الـ QR كود منفرداً
+      </a>
+      <button class="action-btn btn-glass" onclick="copyLink()">
+        📋 نسخ الرابط
+      </button>
+    </div>
+
+    <!-- Live 3D Student Card -->
+    <div class="card-container">
+      <div class="student-card" id="studentCard">
+        <div class="card-bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+        <div class="card-series-tag">🌟 السلسلة الذهبية المعتمدة في التربية الإسلامية 🌟</div>
+        
+        <h1 class="card-title">
+          سلسلة الزَّيْدَان
+          <span>في التَّرْبِيَةِ الإِسْلاَمِيَّةِ</span>
+        </h1>
+        <div class="card-subtitle">الصف الثالث الإعدادي — الفصل الدراسي الأول</div>
+
+        <div class="qr-frame">
+          <img src="qr_code_styled.png" alt="كود QR ملزمة التربية الإسلامية" id="qrImage">
+        </div>
+
+        <div class="scan-hint">
+          <span>📱</span>
+          <span>امسح الكود بكاميرا الموبايل لفتح الملزمة فوراً</span>
+        </div>
+        <div class="scan-url">https://religon-prep3.vercel.app/</div>
+
+        <div class="features-row">
+          <span class="feature-chip">📖 ملخص شامل لكل الفروع</span>
+          <span class="feature-chip">🎯 حل أسئلة الوزارة بالكامل</span>
+          <span class="feature-chip">📝 بنك أسئلة ونماذج امتحانات</span>
+          <span class="feature-chip">🌙 وضع ليلي واختبار تفاعلي</span>
+        </div>
+
+        <div class="card-footer">
+          <div>
+            <div class="teacher-badge">إعداد وإشراف خبير المادة:</div>
+            <div class="teacher-name-bold">مستر / عَلِي زَيْدَان</div>
+          </div>
+          <a href="tel:01000936273" class="phone-badge">
+            <span>📞</span>
+            <span>01000936273</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A4 Printable Sheet (Visible only when printing) -->
+  <div class="printable-sheet">
+    <!-- Card 1 -->
+    <div class="mini-card">
+      <div class="card-title">سلسلة الزَّيْدَان <span>في التربية الإسلامية</span></div>
+      <div class="card-subtitle">الصف الثالث الإعدادي — الترم الأول</div>
+      <div class="qr-frame"><img src="qr_code_styled.png" alt="QR"></div>
+      <div class="scan-hint">📱 امسح الكود لفتح الملزمة فوراً</div>
+      <div class="scan-url">religon-prep3.vercel.app</div>
+      <div class="card-footer">
+        <div class="teacher-name-bold">مستر / علي زيدان</div>
+        <div class="phone-badge">01000936273</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="mini-card">
+      <div class="card-title">سلسلة الزَّيْدَان <span>في التربية الإسلامية</span></div>
+      <div class="card-subtitle">الصف الثالث الإعدادي — الترم الأول</div>
+      <div class="qr-frame"><img src="qr_code_styled.png" alt="QR"></div>
+      <div class="scan-hint">📱 امسح الكود لفتح الملزمة فوراً</div>
+      <div class="scan-url">religon-prep3.vercel.app</div>
+      <div class="card-footer">
+        <div class="teacher-name-bold">مستر / علي زيدان</div>
+        <div class="phone-badge">01000936273</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="mini-card">
+      <div class="card-title">سلسلة الزَّيْدَان <span>في التربية الإسلامية</span></div>
+      <div class="card-subtitle">الصف الثالث الإعدادي — الترم الأول</div>
+      <div class="qr-frame"><img src="qr_code_styled.png" alt="QR"></div>
+      <div class="scan-hint">📱 امسح الكود لفتح الملزمة فوراً</div>
+      <div class="scan-url">religon-prep3.vercel.app</div>
+      <div class="card-footer">
+        <div class="teacher-name-bold">مستر / علي زيدان</div>
+        <div class="phone-badge">01000936273</div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="mini-card">
+      <div class="card-title">سلسلة الزَّيْدَان <span>في التربية الإسلامية</span></div>
+      <div class="card-subtitle">الصف الثالث الإعدادي — الترم الأول</div>
+      <div class="qr-frame"><img src="qr_code_styled.png" alt="QR"></div>
+      <div class="scan-hint">📱 امسح الكود لفتح الملزمة فوراً</div>
+      <div class="scan-url">religon-prep3.vercel.app</div>
+      <div class="card-footer">
+        <div class="teacher-name-bold">مستر / علي زيدان</div>
+        <div class="phone-badge">01000936273</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">تم نسخ رابط الملزمة بنجاح! 🎉</div>
+
+  <script>
+    function copyLink() {
+      navigator.clipboard.writeText("https://religon-prep3.vercel.app/").then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      });
+    }
+
+    // Optional 3D tilt on desktop
+    const card = document.getElementById('studentCard');
+    if (window.innerWidth > 768) {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        card.style.transform = `rotateY(${x * 0.04}deg) rotateX(${-y * 0.04}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+      });
+    }
+  </script>
+</body>
+</html>
